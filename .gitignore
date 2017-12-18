@@ -1,0 +1,7 @@
+build/
+out/
+*.3dsx
+*.smdh
+*.elf
+*.cia
+*.zip
