@@ -22,27 +22,27 @@ int main(int argc, char **argv)
 {
 
     pp2d_init();
-    pp2d_begin_draw(GFX_TOP, GFX_LEFT);
 
-    pp2d_draw_rectangle(0, 0, 400, 240, RGBA8(0, 50, 255, 255));
-    pp2d_draw_text_center(GFX_TOP, 220, 0.5, 0.5, RGBA8(255, 255, 255, 255), "Press Start To exit.");
 
     while (aptMainLoop())
     {
+        pp2d_begin_draw(GFX_TOP, GFX_LEFT);
+
+        pp2d_draw_rectangle(0, 0, 400, 240, RGBA8(0, 50, 255, 255));
+        pp2d_draw_text_center(GFX_TOP, 220, 0.5, 0.5, RGBA8(255, 255, 255, 255), "Press Start To exit.");
+        
         pp2d_end_draw();
+        
         hidScanInput();
 
         u32 kDown = hidKeysDown();
         u32 kHeld = hidKeysHeld();
 
         // Exit if start is held.
-        if (kDown & KEY_START) {
-            pp2d_exit();	
-            break;
-        }
+        if (kDown & KEY_START) break;
 
     }
 
-    pp2d_exit()
+    pp2d_exit();
     return 0;
 }
